@@ -33,14 +33,9 @@ when 'debian'
 when 'rhel'
   include_recipe 'yum'
 
-  yum_key 'RPM-GPG-KEY-jenkins-ci' do
-    url 'http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key'
-    action :add
-  end
-
   yum_repository 'jenkins-ci' do
-    url 'http://pkg.jenkins-ci.org/redhat'
-    key 'RPM-GPG-KEY-jenkins-ci'
+    baseurl 'http://pkg.jenkins-ci.org/redhat'
+    gpgkey 'http://pkg.jenkins-ci.org/redhat/jenkins-ci.org.key'
     action :add
   end
 
